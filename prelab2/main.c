@@ -2,14 +2,20 @@
 
 void printFloatArray(float * array, int length);
 
+//testing stuff
 int main(void) {
-	FILE * fp = fopen("test.txt", "rw+");
-	fprintf(fp, "%d %f %f %f %f %f", 5, 3.2, 3.0, 4.5, 2.9, 9.3);
-	//rewind(fp);
+
+	FILE * fp = fopen("test.txt", "r+");
+	fprintf(fp, "%d %f %f %f", 3, 2.2, 1.33, 44.2);
+	rewind(fp);
 	int length = 0;
 	float * array = readFloatFileIntoArray(fp, &length);
 	printf("Length is %d\n",length);
 	printFloatArray(array, length);
+	freeFloatArray(&array);
+	if (array == NULL) {
+		printf("Array free successful!\n");
+	}
 }
 
 void printFloatArray(float * array, int length) {
