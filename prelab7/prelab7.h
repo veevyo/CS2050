@@ -3,7 +3,9 @@
 
 //first in, first out
 typedef struct {
-	void * data, next, tail;
+	void * data;
+	void * next;
+	void * tail;
 } Queue;
 
 typedef struct {
