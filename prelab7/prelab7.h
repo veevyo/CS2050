@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//first in, first out
-typedef struct {
+typedef struct queueItem {
 	void * data;
-	void * next;
-	void * tail;
+	struct queueItem * next;
+} queueItem;
+typedef struct Queue {	
+	int error;
+	int size;
+	queueItem * item;
 } Queue;
-
-typedef struct {
-	void * p;
-} PointerWrapper;
 
 int getQueueErrorCode(Queue q);
 Queue queueInit();

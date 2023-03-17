@@ -1,21 +1,21 @@
 #include "prelab7.h"
 
-void printQueue(Queue * q) {
+void printQueue(Queue q) {
         printf("{");
-        while (q != NULL) {
-                printf("%p ", q->data);
-                q = q->next;
+        while (q.item->next != NULL) {
+                printf("%p ", q.item->next);
+                q.item->next = q.item->next->next;
         }
         printf("}\n");
 }
 
 int main(void) {
         int i;
-        Queue head;
-        head = queueInit();
+        Queue q;
+        q = queueInit();
 	int hi = 7;
         for (i=0; i<100; i++) {
-                enqueue(&hi, head);
+                enqueue(&hi, q);
         }
-        printQueue(&head);
+        printQueue(q);
 }
